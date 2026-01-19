@@ -44,7 +44,7 @@ cogs is null
 or 
 total_sale is null; 
 ```
--Delete the null values
+- Delete the null values
 ```sql
 delete from retail_sales 
 where 
@@ -66,7 +66,7 @@ cogs is null
 or 
 total_sale is null; 
 ```
--Check the total no of columns
+- Check the total no of columns
 ```sql
 select count(*) from retail_sales;
 ```
