@@ -10,19 +10,19 @@ price_per_unit float, cogs float, total_sale float
 );
 ```
 
-- Data cleaning
+# Data cleaning
 ```sql
 select * from retail_sales;
 SELECT COUNT(*) AS total_rows FROM retail_sales;
 ```
 
- # Rename the column
+-Rename the column
 ```sql
 ALTER TABLE retail_sales 
 change quantiy quantity int;
 ```
 
-# Check the columns have nulls
+-Check the columns have nulls
 ```sql
 select * from retail_sales
 where 
@@ -44,7 +44,7 @@ cogs is null
 or 
 total_sale is null; 
 ```
-# Delete the null values
+-Delete the null values
 ```sql
 delete from retail_sales 
 where 
@@ -66,27 +66,27 @@ cogs is null
 or 
 total_sale is null; 
 ```
-# Check the total no of columns
+-Check the total no of columns
 ```sql
 select count(*) from retail_sales;
 ```
-- Data exploration
-# How many sales we have?
+# Data exploration
+-How many sales we have?
 ```sql
 select count(*) as total_sales from retail_sales;
 ```
 
-# How many customers we have ?
+-How many customers we have ?
 ```sql
 select count(customer_id) as Total_customers from retail_sales;
 ```
 
-# How many unique customers we have ?
+-How many unique customers we have ?
 ```sql
 select count(distinct(customer_id)) as Total_customers from retail_sales;
 ```
--Data Analysis & Business Key Problems & Answers
--My Analysis & Findings
+# Data Analysis & Business Key Problems & Answers
+# My Analysis & Findings
 1. **Write a SQL query to retrieve all columns for sales made on '2022-11-05'**: 
 ```sql 
 select * from retail_sales
