@@ -16,13 +16,13 @@ select * from retail_sales;
 SELECT COUNT(*) AS total_rows FROM retail_sales;
 ```
 
--Rename the column
+- Rename the column
 ```sql
 ALTER TABLE retail_sales 
 change quantiy quantity int;
 ```
 
--Check the columns have nulls
+- Check the columns have nulls
 ```sql
 select * from retail_sales
 where 
@@ -71,17 +71,17 @@ total_sale is null;
 select count(*) from retail_sales;
 ```
 # Data exploration
--How many sales we have?
+- How many sales we have?
 ```sql
 select count(*) as total_sales from retail_sales;
 ```
 
--How many customers we have ?
+- How many customers we have ?
 ```sql
 select count(customer_id) as Total_customers from retail_sales;
 ```
 
--How many unique customers we have ?
+- How many unique customers we have ?
 ```sql
 select count(distinct(customer_id)) as Total_customers from retail_sales;
 ```
