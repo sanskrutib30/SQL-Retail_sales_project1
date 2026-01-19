@@ -1,5 +1,5 @@
-# SQL-Retail_sales_project1
-
+****SQL-Retail_sales_project1
+```sql
 create database sql_project1;
 use sql_project1;
 
@@ -8,16 +8,22 @@ sale_date date, sale_time time, customer_id int, gender varchar(10),
 age int, category varchar(15), quantiy int,
 price_per_unit float, cogs float, total_sale float
 );
+```
 
 # Data cleaning-------------------------------------------
+```sql
 select * from retail_sales;
 SELECT COUNT(*) AS total_rows FROM retail_sales;
+```
 
  # rename the column
+```sql
 ALTER TABLE retail_sales 
 change quantiy quantity int;
+```
 
 # Check the columns have nulls
+```sql
 select * from retail_sales
 where 
 transactions_id is null 
@@ -37,8 +43,9 @@ or
 cogs is null
 or 
 total_sale is null; 
-
+```
 # delete the null values
+```sql
 delete from retail_sales 
 where 
 transactions_id is null 
@@ -58,88 +65,94 @@ or
 cogs is null
 or 
 total_sale is null; 
-
+```
 # check the total no of columns
+```sql
 select count(*) from retail_sales;
-
+```
 # data exploration--------------------------------------------------
 
 # how many sales we have?
+```sql
 select count(*) as total_sales from retail_sales;
+```
 
 # how many customers we have ?
+```sql
 select count(customer_id) as Total_customers from retail_sales;
+```
 
 # how many unique customers we have ?
+```sql
 select count(distinct(customer_id)) as Total_customers from retail_sales;
-
+```
 -- Data Analysis & Business Key Problems & Answers
 
 -- My Analysis & Findings
 1. **Write a SQL query to retrieve all columns for sales made on '2022-11-05'**: 
- '''sql 
+```sql 
 select * from retail_sales
  where sale_date = '2022-11-05';
-'''
+```
  
 2. **Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022**: 
- '''sql 
+ ```sql
 select * from retail_sales 
 where category = 'Clothing' 
 and quantity >= 4
 and sale_date between '2022-11-01' and '2022-11-30';
- '''
+ ```
 
 3. **Write a SQL query to calculate the total sales (total_sale) for each category**: 
- '''sql 
+ ```sql 
 select category, sum(total_sale)as Total_sales, 
 count(*) as total_orders from retail_sales
 group by 1;
-'''
+```
 
 4. **Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category**: 
- '''sql 
+```sql
 select round(avg(age)) as Avg_age from retail_sales
 where category ='Beauty';
 select * from retail_sales;
-'''
+```
  
 5. **Write a SQL query to find all transactions where the total_sale is greater than 1000**: 
- '''sql 
+ ```sql 
 select * from retail_sales
 where total_sale > 1000;
-'''
+```
 
 6. **Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category**: 
- '''sql 
+ ```sql 
 select category,gender, count(*) as Total_No from retail_sales
 group by 1,2
 order by 1;
-'''
+```
  
 7. **Write a SQL query to calculate the average sale for each month. Find out best selling month in each year**: 
- '''sql 
+ ```sql
 select year(sale_date) as Year, month(sale_date) as Month, sum(total_sale) as Total_sale from retail_sales
 group by 1, 2 
 order by 1,2 desc;
- '''
+ ```
  
 8. **Write a SQL query to find the top 5 customers based on the highest total sales**: 
- '''sql 
+ ```sql
 select  customer_id, sum(total_sale)from retail_sales 
 group by 1
 order by 2 desc
 limit 5;
-''' 
+``` 
  
 9. **Write a SQL query to find the number of unique customers who purchased items from each category )**: 
- '''sql
+```sql
 select  category ,count(distinct(customer_id)) as total_no from retail_sales
 group by 1;
-'''
+```
 
 10. **Write a SQL query to create each shift and number of orders (Example Morning <=12, Afternoon Between 12 & 17, Evening >17)**: 
- '''sql
+ ```sql
 SELECT *,
 CASE
     WHEN HOUR(sale_time) < 12 THEN 'Morning'
@@ -147,7 +160,7 @@ CASE
     ELSE 'Evening'
 END AS shift
 FROM retail_sales;
-'''
+```
 **End of project**
  
 ## Findings
@@ -164,5 +177,5 @@ FROM retail_sales;
 - **Customer Insights**: Reports on top customers and unique customer counts per category.
 
 ## Conclusion
-- **This project serves as a comphrensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and bsuiness driven SQL queries. 
-- **The findings from this project can help drive business decisions by understanding sales patterns, customer behaviour, and product performance.
+- This project serves as a comphrensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and bsuiness driven SQL queries. 
+- The findings from this project can help drive business decisions by understanding sales patterns, customer behaviour, and product performance.
